@@ -1,0 +1,23 @@
+from Spinner import Spinner
+
+def main():
+    # Define the paths to the necessary files
+    essay_file = 'essay.txt'
+    synonym_file = 'synonyms-simplified.txt'
+
+    # Read the content from essay.txt
+    with open(essay_file, 'r') as file:
+        essay_text = file.read().lower()  # Read and convert to lowercase
+
+    # Create an instance of the Spinner class
+    spinner = Spinner(synonym_file)
+
+    # Loop to convert the original text three times
+    for i in range(1, 4):
+        print(f"Original : {essay_text}")
+        modified_text = spinner.change_words(essay_text, probability=50)
+        print(f"Option {i} : {modified_text}")
+        essay_text = modified_text
+
+if __name__ == "__main__":
+    main()
